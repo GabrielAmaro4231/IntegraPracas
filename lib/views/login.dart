@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:integrapracas/views/listaPracas.dart';
 import 'cadastro.dart';
 
 class LoginView extends StatelessWidget {
@@ -28,7 +29,12 @@ class LoginView extends StatelessWidget {
                         primary: Colors.blue,
                         padding:
                             EdgeInsets.symmetric(horizontal: 40, vertical: 25)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ListaPracas()),
+                      );
+                    },
                     child: Text('Login'),
                   ),
                   SizedBox(height: 10),
@@ -48,16 +54,16 @@ class LoginView extends StatelessWidget {
                         padding:
                             EdgeInsets.symmetric(horizontal: 70, vertical: 25),
                         side: BorderSide(color: Colors.black)),
+                    child: Text(
+                      'Cadastre-se',
+                      style: TextStyle(color: Colors.black87),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => CadastroView()),
                       );
                     },
-                    child: Text(
-                      'Cadastre-se',
-                      style: TextStyle(color: Colors.black87),
-                    ),
                   ),
                 ],
               ),
