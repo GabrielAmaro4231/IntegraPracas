@@ -53,7 +53,6 @@ class Comentario extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 100,
-      color: Colors.yellow,
       child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
