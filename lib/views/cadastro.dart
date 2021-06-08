@@ -48,7 +48,7 @@ class _CadastroViewState extends State<CadastroView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        botaoVoltar(context),
+                        BotaoVoltar(),
                         botaoConfirmar(),
                       ],
                     ),
@@ -65,77 +65,72 @@ class _CadastroViewState extends State<CadastroView> {
   Column inputSenha() {
     return Column(
       children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          child: Text('Senha:')),
-          SizedBox(height: 3),
-          Center(
+        Container(alignment: Alignment.centerLeft, child: Text('Senha:')),
+        SizedBox(height: 3),
+        Center(
             child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Senha'))),
+                obscureText: true,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'Senha'))),
       ],
     );
   }
+
   Column inputConfirmarSenha() {
     return Column(
       children: [
         Container(
-          alignment: Alignment.centerLeft,
-          child: Text('Confirme a sua senha:')),
-          SizedBox(height: 3),
-          Center(
+            alignment: Alignment.centerLeft,
+            child: Text('Confirme a sua senha:')),
+        SizedBox(height: 3),
+        Center(
             child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Confirmação da senha'))),
+                obscureText: true,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Confirmação da senha'))),
       ],
     );
   }
 
   Widget tituloRegistro() {
     return Container(
-              padding: EdgeInsets.all(30),
-              child: Text('Registre sua Conta.',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 36)),
-            );
+      padding: EdgeInsets.all(30),
+      child: Text('Registre sua Conta.',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36)),
+    );
   }
+
   Widget botaoConfirmar() {
-      return ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
-              padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20)),
-          child: const Text('Confirmar'),
-          onPressed: () {
-            final form = formKey.currentState!;
-            if (form.validate()) {
-              final email = emailController.text;
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            primary: Colors.blue,
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20)),
+        child: const Text('Confirmar'),
+        onPressed: () {
+          final form = formKey.currentState!;
+          if (form.validate()) {
+            final email = emailController.text;
 
             ScaffoldMessenger.of(context)
               ..removeCurrentSnackBar()
               ..showSnackBar(SnackBar(
                 content: Text('Your email is $email'),
               ));
-            }
-          });
-    }
+          }
+        });
+  }
 
   Column inputNome() {
     return Column(
       children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          child: Text('Nome:')),
-          SizedBox(height: 3),
-          Center(
+        Container(alignment: Alignment.centerLeft, child: Text('Nome:')),
+        SizedBox(height: 3),
+        Center(
             child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              hintText: 'Nome'))),
+                obscureText: true,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(), hintText: 'Nome'))),
       ],
     );
   }
@@ -154,19 +149,18 @@ class InputEmail extends StatefulWidget {
 }
 
 class _InputEmailState extends State<InputEmail> {
+  String email = '';
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          child: Text('Email:')),
-          SizedBox(height: 3),
+        Container(alignment: Alignment.centerLeft, child: Text('Email:')),
+        SizedBox(height: 3),
         TextFormField(
           controller: widget.controller,
           keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(hintText: 'Email', border: OutlineInputBorder()),
-          
+          decoration:
+              InputDecoration(hintText: 'Email', border: OutlineInputBorder()),
           validator: (email) {
             if ((!EmailValidator.validate(email!) || email.isEmpty)) {
               return 'Email Inválido';
@@ -180,8 +174,9 @@ class _InputEmailState extends State<InputEmail> {
   }
 }
 
+class BotaoVoltar extends StatelessWidget {
   @override
-  Widget botaoVoltar(BuildContext context) {
+  Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           primary: Colors.white,
@@ -199,6 +194,7 @@ class _InputEmailState extends State<InputEmail> {
       },
     );
   }
+}
 
 class InputField extends StatelessWidget {
   String label;
@@ -212,8 +208,7 @@ class InputField extends StatelessWidget {
         Center(
             child: TextFormField(
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(), 
-                  hintText: label))),
+                    border: OutlineInputBorder(), hintText: label))),
       ],
     );
   }
